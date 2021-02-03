@@ -1,4 +1,4 @@
-# Number System Convertor
+# Number System Converter
 
 ![Live Gif](https://github.com/Madhusudan707/number_system_react/blob/main/number_system/public/number_system_converter.gif)
 ## Getting Started
