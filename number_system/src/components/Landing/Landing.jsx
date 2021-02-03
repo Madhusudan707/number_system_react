@@ -211,13 +211,12 @@ const Landing = () => {
   }
   return (
     <div className={classes.root}>
-     
       <Grid container spacing={0}>
-      <Grid item xs={12}>
-      <Navbar />
-      </Grid>
         <Grid item xs={12}>
-          <br/> <br/>
+          <Navbar />
+        </Grid>
+        <Grid item xs={12}>
+          <br /> <br />
           <div className="InputBoxParent">
             <InputBox
               value=""
@@ -249,12 +248,9 @@ const Landing = () => {
             />
           </div>
         </Grid>
-        
-          <ContainedButtons name="SUBMIT" Handler={clickHandler} />
-          <ContainedButtons name="RESET" Handler={resetHandler} />
-        
 
-      
+        <ContainedButtons name="SUBMIT" Handler={clickHandler} />
+        <ContainedButtons name="RESET" Handler={resetHandler} />
       </Grid>
     </div>
   );
