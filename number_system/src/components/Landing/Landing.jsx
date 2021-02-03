@@ -13,11 +13,11 @@ import {
 import "./landing.css";
 
 const Landing = () => {
-  const [inputData, setInputData] = useState("");
-  let input, id;
+  // const [inputData, setInputData] = useState("");
+  let input, id,inputBox;
 
   function clickHandler() {
-    let inputBox = document.querySelectorAll(".MuiInputBase-input");
+    inputBox = document.querySelectorAll(".MuiInputBase-input");
     for (let i = 0; i < inputBox.length; i++) {
       let textBoxValue = 0;
       textBoxValue = document.getElementById(inputBox[i].id).value;
@@ -184,7 +184,12 @@ const Landing = () => {
     //   setInputData(num);
     // });
   }
-  function resetHandler(e) {}
+  function resetHandler(e) {
+    document.getElementById("binary").value = ""
+    document.getElementById("decimal").value = ""
+    document.getElementById("octal").value = ""
+    document.getElementById("hexadecimal").value = ""
+  }
 
   function inputHandler(event) {
     input = event.target.value;
