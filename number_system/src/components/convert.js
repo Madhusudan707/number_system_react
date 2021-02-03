@@ -91,21 +91,27 @@ function BinaryToDecimal(binary, base) {
       remainder = hexadecimal_arr[i];
       switch (remainder) {
         case "A":
+        case "a":
           remainder = 10;
           break;
         case "B":
+        case "b":
           remainder = 11;
           break;
         case "C":
+        case "c":
           remainder = 12;
           break;
         case "D":
+        case "d":
           remainder = 13;
           break;
         case "E":
+        case "e":
           remainder = 14;
           break;
         case "F":
+        case "f":
           remainder = 15;
           break;
       }
