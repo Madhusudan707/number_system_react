@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   return (
     <div className={classes.root}>
         <Typography variant="h4" className={classes.title}>
-            NUMBER SYSTEM CONVERTOR
+            NUMBER SYSTEM CONVERTER
         </Typography>
     </div>
   );
