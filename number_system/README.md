@@ -6,4 +6,4 @@
 1. npm install
 2. npm start
 
-Live Demo : https://numbersystemreact.netlify.app/
+Live Site : https://numbersystemreact.netlify.app/
