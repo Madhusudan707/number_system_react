@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import InputBox from "../InputBox/InputBox";
 import ContainedButtons from "../ContainedButtons/ContainedButtons";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import {
   BinaryToDecimal,
@@ -12,9 +14,21 @@ import {
 
 import "./landing.css";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+}));
+
 const Landing = () => {
+  const classes = useStyles();
   // const [inputData, setInputData] = useState("");
-  let input, id,inputBox;
+  let input, id, inputBox;
 
   function clickHandler() {
     inputBox = document.querySelectorAll(".MuiInputBase-input");
@@ -185,10 +199,10 @@ const Landing = () => {
     // });
   }
   function resetHandler(e) {
-    document.getElementById("binary").value = ""
-    document.getElementById("decimal").value = ""
-    document.getElementById("octal").value = ""
-    document.getElementById("hexadecimal").value = ""
+    document.getElementById("binary").value = "";
+    document.getElementById("decimal").value = "";
+    document.getElementById("octal").value = "";
+    document.getElementById("hexadecimal").value = "";
   }
 
   function inputHandler(event) {
@@ -196,44 +210,52 @@ const Landing = () => {
     id = event.target.id;
   }
   return (
-    <div>
+    <div className={classes.root}>
+     
+      <Grid container spacing={0}>
+      <Grid item xs={12}>
       <Navbar />
-      <div className="InputBoxParent">
-        <InputBox
-          value=""
-          id="binary"
-          className="nsBox"
-          placeholder="Enter Binary"
-          inputHandler={inputHandler}
-        />
-        <InputBox
-          value=""
-          id="decimal"
-          className="nsBox"
-          placeholder="Enter Decimal"
-          inputHandler={inputHandler}
-        />
-        <InputBox
-          value=""
-          id="octal"
-          className="nsBox"
-          placeholder="Enter Octal"
-          inputHandler={inputHandler}
-        />
-        <InputBox
-          value=""
-          id="hexadecimal"
-          className="nsBox"
-          placeholder="Enter Hexa Decimal"
-          inputHandler={inputHandler}
-        />
-      </div>
-      <br />
-      {/* <p>{inputData}</p> */}
-      <div>
-        <ContainedButtons name="SUBMIT" Handler={clickHandler} />
-        <ContainedButtons name="RESET" Handler={resetHandler} />
-      </div>
+      </Grid>
+        <Grid item xs={12}>
+          <br/> <br/>
+          <div className="InputBoxParent">
+            <InputBox
+              value=""
+              id="binary"
+              className="nsBox"
+              placeholder="Enter Binary"
+              inputHandler={inputHandler}
+            />
+            <InputBox
+              value=""
+              id="decimal"
+              className="nsBox"
+              placeholder="Enter Decimal"
+              inputHandler={inputHandler}
+            />
+            <InputBox
+              value=""
+              id="octal"
+              className="nsBox"
+              placeholder="Enter Octal"
+              inputHandler={inputHandler}
+            />
+            <InputBox
+              value=""
+              id="hexadecimal"
+              className="nsBox"
+              placeholder="Enter Hexa Decimal"
+              inputHandler={inputHandler}
+            />
+          </div>
+        </Grid>
+        
+          <ContainedButtons name="SUBMIT" Handler={clickHandler} />
+          <ContainedButtons name="RESET" Handler={resetHandler} />
+        
+
+      
+      </Grid>
     </div>
   );
 };
