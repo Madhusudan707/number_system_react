@@ -14,8 +14,8 @@ import "./landing.css";
 
 const Landing = () => {
   const [inputData, setInputData] = useState("");
-  let input, id
- 
+  let input, id;
+
   function clickHandler() {
     let inputBox = document.querySelectorAll(".MuiInputBase-input");
     for (let i = 0; i < inputBox.length; i++) {
@@ -31,16 +31,15 @@ const Landing = () => {
             case 1:
               base = 2;
               returnValue = BinaryToDecimal(textBoxValue, base);
-              console.log("y", returnValue);
-              document.getElementById("decimal").autofocus = true;
+
               document.getElementById("decimal").value = returnValue;
-          
+
               break;
             case 2:
               base = 2;
               returnValue = BinaryToOctal(textBoxValue, base);
               document.getElementById("octal").value = returnValue;
-            
+
               break;
             case 3:
               base = 2;
@@ -51,7 +50,7 @@ const Landing = () => {
                 base
               );
               document.getElementById("hexadecimal").value = returnValue;
-           
+
               break;
             default:
           }
@@ -71,7 +70,7 @@ const Landing = () => {
                 base
               );
               document.getElementById("binary").value = returnValue;
-              
+
               break;
             case 2:
               base = 8;
@@ -80,7 +79,7 @@ const Landing = () => {
                 base
               );
               document.getElementById("octal").value = returnValue;
-             
+
               break;
             case 3:
               base = 16;
@@ -89,7 +88,7 @@ const Landing = () => {
                 base
               );
               document.getElementById("hexadecimal").value = returnValue;
-             
+
               break;
             default:
           }
@@ -111,13 +110,13 @@ const Landing = () => {
                 base
               );
               document.getElementById("binary").value = returnValue;
-            
+
               break;
             case 2:
               base = 8;
               returnValue = BinaryToDecimal(textBoxValue, base);
               document.getElementById("decimal").value = returnValue;
-              
+
               break;
             case 3:
               base = 8;
@@ -128,7 +127,7 @@ const Landing = () => {
                 base
               );
               document.getElementById("hexadecimal").value = returnValue;
-              
+
               break;
             default:
           }
@@ -151,13 +150,13 @@ const Landing = () => {
                 base
               );
               document.getElementById("binary").value = returnValue;
-              
+
               break;
             case 2:
               base = 16;
               returnValue = hexadecimalToBinary(textBoxValue, base);
               document.getElementById("decimal").value = returnValue;
-             
+
               break;
             case 3:
               base = 16;
@@ -168,7 +167,7 @@ const Landing = () => {
                 base
               );
               document.getElementById("octal").value = returnValue;
-            
+
               break;
             default:
           }
@@ -184,7 +183,6 @@ const Landing = () => {
 
     //   setInputData(num);
     // });
-   
   }
   function resetHandler(e) {}
 
