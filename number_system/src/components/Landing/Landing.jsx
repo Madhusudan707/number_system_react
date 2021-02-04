@@ -31,7 +31,7 @@ const Landing = () => {
       textBoxValue = document.getElementById(inputBox[i].id).value;
       if (i === 0 && textBoxValue) {
         //Binary to All
-          axios.get(`http://127.0.0.1:3001/B2ALL/${textBoxValue}`).then((res) => {
+          axios.get(`https://numbersystemreact.netlify.app/B2ALL/${textBoxValue}`).then((res) => {
           document.getElementById("decimal").value = res.data.resultB2D;
           document.getElementById("octal").value = res.data.resultB2O;
           document.getElementById("hexadecimal").value = res.data.resultB2HD;
