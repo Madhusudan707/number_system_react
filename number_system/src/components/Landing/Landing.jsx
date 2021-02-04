@@ -5,8 +5,14 @@ import ContainedButtons from "../ContainedButtons/ContainedButtons";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
-import "./landing.css";
+import {
+  BinaryToDecimal,
+  BinaryToOctal,
+  DecimalToBinary_Octal_hexaDecimal,
+  hexadecimalToBinary,
+} from "../convert.js";
 
+import "./landing.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -18,57 +24,183 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const Landing = () => {
   const classes = useStyles();
   const [inputData, setInputData] = useState("");
-  let input, id, inputBox;
-
+  let input, id
+ 
   function clickHandler() {
-   
-    inputBox = document.querySelectorAll(".MuiInputBase-input");
+    let inputBox = document.querySelectorAll(".MuiInputBase-input");
     for (let i = 0; i < inputBox.length; i++) {
       let textBoxValue = 0;
       textBoxValue = document.getElementById(inputBox[i].id).value;
-      if (i === 0 && textBoxValue) {
+      if (i == 0 && textBoxValue) {
         //Binary to All
-          axios.get(`http://127.0.0.1:3001/B2ALL/${textBoxValue}`).then((res) => {
-          document.getElementById("decimal").value = res.data.resultB2D;
-          document.getElementById("octal").value = res.data.resultB2O;
-          document.getElementById("hexadecimal").value = res.data.resultB2HD;
-        });
-      } else if (i === 1 && textBoxValue) {
-       //Decimal to All
-       axios.get(`http://127.0.0.1:3001/D2ALL/${textBoxValue}`).then((res) => {
-        document.getElementById("binary").value = res.data.resultD2B;
-        document.getElementById("octal").value = res.data.resultD2O;
-        document.getElementById("hexadecimal").value = res.data.resultD2HD;
-      });
-      } else if (i === 2 && textBoxValue) {
+        let toAll = 1,
+          base,
+          returnValue = 0;
+        while (toAll <= 3) {
+          switch (toAll) {
+            case 1:
+              base = 2;
+              returnValue = BinaryToDecimal(textBoxValue, base);
+              console.log("y", returnValue);
+              document.getElementById("decimal").autofocus = true;
+              document.getElementById("decimal").value = returnValue;
+          
+              break;
+            case 2:
+              base = 2;
+              returnValue = BinaryToOctal(textBoxValue, base);
+              document.getElementById("octal").value = returnValue;
+            
+              break;
+            case 3:
+              base = 2;
+              returnValue = BinaryToDecimal(textBoxValue, base);
+              base = 16;
+              returnValue = DecimalToBinary_Octal_hexaDecimal(
+                returnValue,
+                base
+              );
+              document.getElementById("hexadecimal").value = returnValue;
+           
+              break;
+            default:
+          }
+          toAll = toAll + 1;
+        }
+      } else if (i == 1 && textBoxValue) {
+        let toAll = 1,
+          base,
+          returnValue = 0;
+        while (toAll <= 3) {
+          //Decimal to All
+          switch (toAll) {
+            case 1:
+              base = 2;
+              returnValue = DecimalToBinary_Octal_hexaDecimal(
+                textBoxValue,
+                base
+              );
+              document.getElementById("binary").value = returnValue;
+              
+              break;
+            case 2:
+              base = 8;
+              returnValue = DecimalToBinary_Octal_hexaDecimal(
+                textBoxValue,
+                base
+              );
+              document.getElementById("octal").value = returnValue;
+             
+              break;
+            case 3:
+              base = 16;
+              returnValue = DecimalToBinary_Octal_hexaDecimal(
+                textBoxValue,
+                base
+              );
+              document.getElementById("hexadecimal").value = returnValue;
+             
+              break;
+            default:
+          }
+          toAll = toAll + 1;
+        }
+      } else if (i == 2 && textBoxValue) {
         //Octal to All
-        axios.get(`http://127.0.0.1:3001/O2ALL/${textBoxValue}`).then((res) => {
-        document.getElementById("binary").value = res.data.resultO2B;
-        document.getElementById("decimal").value = res.data.resultO2D;
-        document.getElementById("hexadecimal").value = res.data.resultO2HD;
-      });
-       
-      } else if (i === 3 && textBoxValue) {
-        //HexaDecimal to All
-        axios.get(`http://127.0.0.1:3001/HD2ALL/${textBoxValue}`).then((res) => {
-        document.getElementById("binary").value = res.data.resultHD2B;
-        document.getElementById("decimal").value = res.data.resultHD2D;
-        document.getElementById("octal").value = res.data.resultHD2O;
-      });
-       
+        let toAll = 1,
+          base,
+          returnValue = 0;
+        while (toAll <= 3) {
+          switch (toAll) {
+            case 1:
+              base = 8;
+              returnValue = BinaryToDecimal(textBoxValue, base);
+              base = 2;
+              returnValue = DecimalToBinary_Octal_hexaDecimal(
+                returnValue,
+                base
+              );
+              document.getElementById("binary").value = returnValue;
+            
+              break;
+            case 2:
+              base = 8;
+              returnValue = BinaryToDecimal(textBoxValue, base);
+              document.getElementById("decimal").value = returnValue;
+              
+              break;
+            case 3:
+              base = 8;
+              returnValue = BinaryToDecimal(textBoxValue, base);
+              base = 16;
+              returnValue = DecimalToBinary_Octal_hexaDecimal(
+                returnValue,
+                base
+              );
+              document.getElementById("hexadecimal").value = returnValue;
+              
+              break;
+            default:
+          }
+          toAll = toAll + 1;
+        }
+      } else if (i == 3 && textBoxValue) {
+        //Octal to All
+        let toAll = 1,
+          base,
+          returnValue = 0;
+        while (toAll <= 3) {
+          switch (toAll) {
+            case 1:
+              base = 16;
+              returnValue = hexadecimalToBinary(textBoxValue, base);
+
+              base = 2;
+              returnValue = DecimalToBinary_Octal_hexaDecimal(
+                returnValue,
+                base
+              );
+              document.getElementById("binary").value = returnValue;
+              
+              break;
+            case 2:
+              base = 16;
+              returnValue = hexadecimalToBinary(textBoxValue, base);
+              document.getElementById("decimal").value = returnValue;
+             
+              break;
+            case 3:
+              base = 16;
+              returnValue = hexadecimalToBinary(textBoxValue, base);
+              base = 8;
+              returnValue = DecimalToBinary_Octal_hexaDecimal(
+                returnValue,
+                base
+              );
+              document.getElementById("octal").value = returnValue;
+            
+              break;
+            default:
+          }
+          toAll = toAll + 1;
+        }
       }
-   }
+    }
+
+    // //setInputData(input)
+    // // axios.get(`http://numbersapi.com/${inputData}/math`)
+    // axios.get(`http://127.0.0.1:3001/number/${input}`).then((res) => {
+    //   const num = res.data;
+
+    //   setInputData(num);
+    // });
    
   }
-  function resetHandler(e) {
-    document.getElementById("binary").value = "";
-    document.getElementById("decimal").value = "";
-    document.getElementById("octal").value = "";
-    document.getElementById("hexadecimal").value = "";
-  }
+  function resetHandler(e) {}
 
   function inputHandler(event) {
     input = event.target.value;
