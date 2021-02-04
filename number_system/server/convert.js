@@ -1,4 +1,4 @@
-function BinaryToDecimal(binary, base) {
+const BinaryToDecimal = (binary, base) => {
     let power =0, sum = 0;
     let binary_arr = binary.split("");
     binary_arr = binary_arr.map((j) => Number(j));
@@ -19,7 +19,8 @@ function BinaryToDecimal(binary, base) {
     }
   }
   
-  function BinaryToOctal(binary, base) {
+  
+const BinaryToOctal = (binary, base) => {
     let resultBinary,
       remainder,
       joinOctal = 0;
@@ -47,7 +48,7 @@ function BinaryToDecimal(binary, base) {
     return reverse;
   }
   
-  function DecimalToBinary_Octal_hexaDecimal(decimal, base) {
+const DecimalToBinary_Octal_hexaDecimal = (decimal, base) => {
     let remainder = 0,
       binaryResult_arr = [];
     while (decimal > 0) {
@@ -81,7 +82,7 @@ function BinaryToDecimal(binary, base) {
     return binaryResult_arr.reverse().join("");
   }
   
-  function hexadecimalToBinary(HexaDecimal, base) {
+const hexadecimalToBinary = (HexaDecimal, base) => {
     let hexadecimal_arr = HexaDecimal.split("");
     let hexadecimal_arr_length = hexadecimal_arr.length;
     let hexadecimal_power = hexadecimal_arr_length - 1;
@@ -122,6 +123,6 @@ function BinaryToDecimal(binary, base) {
     return decimalResult;
   }
   
-  export{BinaryToDecimal,BinaryToOctal,DecimalToBinary_Octal_hexaDecimal,hexadecimalToBinary}
+  module.exports={BinaryToDecimal,BinaryToOctal,DecimalToBinary_Octal_hexaDecimal,hexadecimalToBinary}
   
   
