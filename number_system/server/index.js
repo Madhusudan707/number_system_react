@@ -11,13 +11,14 @@ app.use(express.static('../public'))
 app.use(express.urlencoded({extended:true}))
 app.use(body_parser.json())
 
+//Number's Base
+
+const base2 = 2,base8 = 8, base16 = 16
 
 //1. Binary to All
 
 app.get('/B2ALL/:binary',(req,res,next)=>{
   let binary = req.params.binary
-  let base2 = 2
-  let base16 = 16
    if(binary){
      res.send({
        resultB2D: convert.BinaryToDecimal(binary,base2),
@@ -30,11 +31,9 @@ app.get('/B2ALL/:binary',(req,res,next)=>{
 })
 
 //2. Decimal to All
+
 app.get('/D2ALL/:decimal',(req,res,next)=>{
   let decimal = req.params.decimal
-  let base2 = 2
-  let base8 = 8
-  let base16 = 16
    if(decimal){
      res.send({
        resultD2B: convert.DecimalToBinary_Octal_hexaDecimal(decimal, base2),
@@ -50,9 +49,6 @@ app.get('/D2ALL/:decimal',(req,res,next)=>{
 
 app.get('/O2ALL/:octal',(req,res,next)=>{
   let octal = req.params.octal
-  let base2 = 2
-  let base8 = 8
-  let base16 = 16
    if(octal){
      res.send({
        resultO2B: convert.DecimalToBinary_Octal_hexaDecimal(convert.BinaryToDecimal(octal, base8), base2),
@@ -68,9 +64,6 @@ app.get('/O2ALL/:octal',(req,res,next)=>{
 
 app.get('/HD2ALL/:hexadecimal',(req,res,next)=>{
   let hexadecimal = req.params.hexadecimal
-  let base2 = 2
-  let base8 = 8
-  let base16 = 16
    if(hexadecimal){
      res.send({
        resultHD2B: convert.DecimalToBinary_Octal_hexaDecimal(convert.hexadecimalToBinary(hexadecimal,base16), base2),
